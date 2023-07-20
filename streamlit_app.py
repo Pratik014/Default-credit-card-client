@@ -17,6 +17,8 @@ app=application
 def index():
     return render_template('home.html') 
 
+
+
 @app.route('/predictdefaulter',methods=['GET','POST'])
 def predict_defaulter():
     if request.method=='GET':
