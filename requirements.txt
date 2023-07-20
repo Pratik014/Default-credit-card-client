@@ -12,3 +12,4 @@ gunicorn
 Werkzeug
 jinja2
 MarkupSafe
+typing
