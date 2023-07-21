@@ -1,4 +1,5 @@
-from flask import Flask,request,render_template
+from flask import Flask,request,render_template,jsonify
+from flask_cors import CORS,cross_origin
 import numpy as np
 import pandas as pd
 
@@ -13,12 +14,14 @@ app=Flask(__name__)
 ## Route for a home page
 
 @app.route('/')
-def index():
+@cross_origin()
+def home_page():
     return render_template('home.html') 
 
 
 
 @app.route('/predictdefaulter',methods=['GET','POST'])
+@cross_origin()
 def predict_defaulter():
     if request.method=='GET':
         return render_template('home.html')
@@ -65,8 +68,55 @@ def predict_defaulter():
             result="The person is Not Defaulter"
 
 
-        return render_template('home.html',result=result)
+        return render_template('home.html',result=result,pred_df=pred_df)
     
+@app.route('/predictAPI',methods=['POST'])
+@cross_origin()
+def predict_api():
+    if request.method=='POST':
+        data=CustomData(
+            #ID = (request.form.get('ID')),
+            LIMIT_BAL = float(request.json('LIMIT_BAL')),
+            AGE = int(request.json('AGE')),
+            BILL_AMT1 = float(request.json('BILL_AMT1')),
+            BILL_AMT2 = float(request.json('BILL_AMT2')),
+            BILL_AMT3 = float(request.json('BILL_AMT3')),
+            BILL_AMT4 = float(request.json('BILL_AMT4')),
+            BILL_AMT5 = float(request.json('BILL_AMT5')),
+            BILL_AMT6 = float(request.json('BILL_AMT6')),
+            PAY_AMT1 = float(request.json('PAY_AMT1')),
+            PAY_AMT2 = float(request.json('PAY_AMT2')),
+            PAY_AMT3 = float(request.json('PAY_AMT3')),
+            PAY_AMT4 = float(request.json('PAY_AMT4')),
+            PAY_AMT5 = float(request.json('PAY_AMT5')),
+            PAY_AMT6 = float(request.json('PAY_AMT6')),
+            SEX = (request.form.get('SEX')),
+            EDUCATION = int(request.json('EDUCATION')),
+            MARRIAGE = int(request.json('MARRIAGE')),
+
+
+            PAY_1 = int(request.json('PAY_1')),
+            PAY_2 = int(request.json('PAY_2')),
+            PAY_3 = int(request.json('PAY_3')),
+            PAY_4 = int(request.json('PAY_4')),
+            PAY_5 = int(request.json('PAY_5')),
+            PAY_6 = int(request.json('PAY_6'))
+
+        )
+
+
+        pred_df=data.get_data_as_data_frame()
+        print(pred_df)
+
+        predict_pipeline=PredictPipeline()
+        result=predict_pipeline.predict(pred_df)
+        if result!=0.:
+            result="The person is Defaulter"
+        else:
+            result="The person is Not Defaulter"
+
+
+        return jsonify(result)
 
 if __name__=="__main__":
     app.run(host="0.0.0.0")
