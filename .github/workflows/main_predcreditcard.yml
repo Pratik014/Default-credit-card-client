@@ -3,6 +3,10 @@
 # More info on Python, GitHub Actions, and Azure App Service: https://aka.ms/python-webapps-actions
 
 name: Build and deploy Python app to Azure Web App - predcreditcard
+<<<<<<< HEAD
+=======
+
+>>>>>>> 39065fa (change)
 
 on:
   push:
@@ -55,7 +59,7 @@ jobs:
           path: .
           
       - name: 'Deploy to Azure Web App'
-        uses: azure/webapps-deploy@v2
+        uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
         with:
           app-name: 'predcreditcard'
