@@ -3,14 +3,14 @@ seaborn
 numpy
 matplotlib
 scikit-learn
-dill
+
 Flask
 dataclasses
-flask_pymongo
+
 -e .
 gunicorn
 Werkzeug
 jinja2
 MarkupSafe
-typing
+
 flask_cors
