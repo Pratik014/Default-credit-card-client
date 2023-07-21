@@ -19,12 +19,7 @@ jobs:
     steps:
       
       - uses: actions/checkout@v3
-      - name: Install latest stable Rust toolchain
-        uses: actions-rs/toolchain@v1
-        with:
-          profile: minimal
-          toolchain: stable
-
+      
       - name: Set up Python version
         uses: actions/setup-python@v1
         with:
