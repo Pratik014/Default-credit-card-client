@@ -1,5 +1,5 @@
 from flask import Flask,request,render_template,jsonify
-from flask_cors import CORS,cross_origin
+from flask_cors import CORS
 import numpy as np
 import pandas as pd
 
@@ -12,14 +12,14 @@ app=application
 ## Route for a home page
 
 @app.route('/')
-@cross_origin()
+
 def home_page():
     return render_template('home.html') 
 
 
 
 @app.route('/predictdefaulter',methods=['GET','POST'])
-@cross_origin()
+
 def predict_defaulter():
     if request.method=='GET':
         return render_template('home.html')
@@ -69,5 +69,9 @@ def predict_defaulter():
         return render_template('home.html',result=result,pred_df=pred_df)
     
 if __name__=="__main__":
+<<<<<<< HEAD
     app.run(host="0.0.0.0")
 
+=======
+    app.run(host="0.0.0.0",port=8080)
+>>>>>>> 06e8993 (changes)
