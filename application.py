@@ -69,9 +69,5 @@ def predict_defaulter():
         return render_template('home.html',result=result,pred_df=pred_df)
     
 if __name__=="__main__":
-<<<<<<< HEAD
-    app.run(host="0.0.0.0")
-
-=======
     app.run(host="0.0.0.0",port=8080)
->>>>>>> 06e8993 (changes)
+
