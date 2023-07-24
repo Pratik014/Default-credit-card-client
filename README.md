@@ -23,8 +23,9 @@ https://www.kaggle.com/datasets/uciml/default-of-credit-card-clients-dataset
 # ->Click on the link generated and follow the webpage
 http://customercreditcard-env.eba-ka8nspsz.us-east-1.elasticbeanstalk.com/
 '''
+
 '''
-#Youtube link
+# -> Youtube link
 https://youtu.be/Wk_k92sww_I
 '''
 ----------------------------------------------------------------------------------------------
