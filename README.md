@@ -21,7 +21,7 @@ default based on credit card owner’s characteristics and payment history.
 https://www.kaggle.com/datasets/uciml/default-of-credit-card-clients-dataset
 
 
-## ->Click on the link generated and follow the webpage
+## ->Click on the live link AWS 
 
 http://customercreditcard-env.eba-ka8nspsz.us-east-1.elasticbeanstalk.com/
 
