@@ -19,6 +19,10 @@ default based on credit card owner’s characteristics and payment history.
 ## Dataset link: 
 https://www.kaggle.com/datasets/uciml/default-of-credit-card-clients-dataset
 ```
+'''
+# ->Click on the link generated and follow the webpage
+http://customercreditcard-env.eba-ka8nspsz.us-east-1.elasticbeanstalk.com/
+'''
 ----------------------------------------------------------------------------------------------
 
 # Content
@@ -76,8 +80,7 @@ pip install -r requirements.txt
 ```
 python app.py
 ```
-### ->Click on the link generated and follow the webpage
-http://customercreditcard-env.eba-ka8nspsz.us-east-1.elasticbeanstalk.com/
+
 ### ->Enter all the details and click on Prediction
 
 ### ->output will be obtained, wheather a person is Defaulter or He is not a Defaulter.
