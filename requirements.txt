@@ -6,11 +6,11 @@ scikit-learn
 dill
 Flask
 dataclasses
-
+optuna
 -e .
 gunicorn
 Werkzeug
 jinja2
 MarkupSafe
-
+xgboost
 flask_cors

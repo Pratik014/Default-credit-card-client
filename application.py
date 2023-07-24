@@ -60,7 +60,7 @@ def predict_defaulter():
 
         predict_pipeline=PredictPipeline()
         result=predict_pipeline.predict(pred_df)
-        if result!=0.:
+        if result != 0:
             result="The person is Defaulter"
         else:
             result="The person is Not Defaulter"

@@ -34,7 +34,7 @@ class ModelTrainer:
             models = {
             "Logistic Regression": LogisticRegression(),
             "Decision Tree": DecisionTreeClassifier(),
-            "Random Forest Classifier": RandomForestClassifier(),
+            "Random Forest Classifier": RandomForestClassifier(criterion='gini',max_depth=7,n_estimators=6),
             "Support Vector machine":SVC()
             }
             params={
@@ -43,14 +43,16 @@ class ModelTrainer:
                     'splitter' : ['best', 'random'],
                     'max_features':['sqrt','log2']
                 },
+                
+                "Logistic Regression":{
+                    'penalty': ['l2',],
+                
+                },
                 "Random Forest Classifier":{
                     'criterion':['gini'],
                  
-                    'max_features':['sqrt','log2'],
-                    'n_estimators': [8,16,32,64,128,256]
-                },
-                "Logistic Regression":{
-                    'penalty': ['l2',],
+                    'max_depth':[7],
+                    'n_estimators': [6]
                     
                 },
                 "Support Vector machine":{
@@ -63,33 +65,34 @@ class ModelTrainer:
         
         ## to get the best score from dict
             best_model_score = max(sorted(model_report.values()))
+            best_model_name = list(model_report.keys())[list(model_report.values()).index(best_model_score)]
 
-        ## to get the best model name from the dictionary
-            best_model_name= list(model_report.keys())[list(model_report.values()).index(best_model_score)]
+            # Retrieve the best model
+            best_model = models[best_model_name]
 
-            best_model= models[best_model_name]
-            logging.info(best_model, best_model_name, best_model_score)
-            logging.info(f"Best found model on both training and testing dataset")
+            # Use string formatting to log the best model's information
+            logging.info("Best model: %s", best_model_name)
+            logging.info("Best model score: %f", best_model_score)
+
+            logging.info("Best found model on both training and testing dataset:")
             logging.info(best_model)
-            
 
+            # Save the best model
             save_object(
                 file_path=self.model_trainer_config.trained_model_file_path,
                 obj=best_model
             )
-            
-             ## train and evaluate the best model
+
+            # Train and evaluate the best model
             best_model.fit(X_train, y_train)
             y_pred = best_model.predict(X_test)
             accuracy = accuracy_score(y_test, y_pred)
             report = classification_report(y_test, y_pred, output_dict=True)
-            confustion = confusion_matrix(y_test, y_pred, output_dict=True)
 
-            print('confusion matrix\n',accuracy(y_test,y_pred))
-            print('classification report\n', report)
-            print('accuracy score', confustion(y_test,y_pred))
-            logging.info(accuracy)
+            # Log the accuracy score
+            logging.info("Accuracy: %f", accuracy)
 
+            return {"accuracy": accuracy, "classification_report": report}
             
         except Exception as e:
-            raise CustomException(e,sys)
+            raise CustomException(e, sys)
