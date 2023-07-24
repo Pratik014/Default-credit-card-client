@@ -59,6 +59,7 @@ class ModelTrainer:
                     'gamma': ['scale','auto'],
                 
             }
+                
             }
 
             model_report:dict=evaluate_models(X_train=X_train,y_train=y_train,X_test=X_test,y_test=y_test,models=models,param=params)
