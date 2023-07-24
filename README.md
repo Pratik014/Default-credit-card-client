@@ -77,13 +77,13 @@ pip install -r requirements.txt
 python app.py
 ```
 ### ->Click on the link generated and follow the webpage
-
+http://customercreditcard-env.eba-ka8nspsz.us-east-1.elasticbeanstalk.com/
 ### ->Enter all the details and click on Prediction
 
 ### ->output will be obtained, wheather a person is Defaulter or He is not a Defaulter.
 
 -------------------------------------------------------------------------------
-## Models that are being implemented and among these the best model will be selected: In this case SVM is being selected as it has the maximum accuracy.
+## Models that are being implemented and among these the best model will be selected: In this case RandomforestClassifier is being selected as it has the maximum accuracy.
 
 ### ->Linear Models-: Logistic Regression 
 
